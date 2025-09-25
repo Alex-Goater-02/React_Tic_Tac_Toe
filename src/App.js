@@ -70,6 +70,11 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
+  function resetGame() {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }
+
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
@@ -88,6 +93,7 @@ export default function Game() {
     <div className="game">
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        <button onClick={resetGame}>Reset Game</button>
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
